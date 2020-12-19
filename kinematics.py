@@ -27,7 +27,17 @@ ROBOT = 'UR10'
 
 
 # DH Parameter
-
+if ROBOT == 'UR16e':
+    d1 = 0.1807
+    d2 = d3 = 0
+    d4 = 0.17415
+    d5 = 0.11985
+    d6 = 0.11655
+    
+    a1 = a4 = a5 = a6 = 0
+    a2 = -0.4784
+    a3 = -0.36
+    
 if ROBOT == 'UR10':
 
     # d (unit: mm)
@@ -182,7 +192,7 @@ def select(q_sols, q_d, w=[1]*6):
     return q_sols[error.index(min(error))]
 
 
-def HTM(i, theta):
+def HTM(i, theta): # Homogenuous transformation matrix https://www.youtube.com/watch?v=4WRhVqQaZTE
     """Calculate the HTM between two links.
 
     Args:
